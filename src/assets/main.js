@@ -18,7 +18,8 @@ async function fetchData(urlapi){
 (async()=>{
 try{
     const videos = await fetchData(API);
-    let view = ` ${videos.items.map(video=>`      
+    let view = ` ${videos.items.map(video=>`
+    <a href="https://www.youtube.com/watch?v=${video.id.videoId}" target="_blank">
     <div class="group relative">
     <div
       class="w-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none">
@@ -32,10 +33,13 @@ try{
     </div>
   </div>
 </div>
+</a> 
     `).slice(0,4).join('')} 
 
 `;
 content.innerHTML=view;
+
+
 }
 catch(error){console.log(error);}
 })();
